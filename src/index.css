@@ -49,11 +49,16 @@ code {
   min-width: 80px;
   min-height: 80px;
   font-size: 32px;
+  cursor: pointer;
   font-weight: bolder;
   padding: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.square:hover{
+  background-color: rgba(77,181,255,0.4);
 }
 
 /* ==============bordering=============== */

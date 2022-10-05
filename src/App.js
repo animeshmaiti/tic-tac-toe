@@ -1,16 +1,20 @@
 import React, { useState, useEffect} from "react";
 import SquareComponent from "./SquareComponent";
+// import MISC2 from '../src/assets/game-over.mp3'
+// import MISC1 from '../src/assets/click.mp3'
 
+// let turn = new Audio(MISC1);
 const initialState = ["", "", "", "", "", "", "", "", ""];//initialy blank
-
-
+// let GOver = new Audio(MISC2);
 
 function App() {
   const [gameState, updateGameState] = useState(initialState);//initialize game state
   const [isXChance,updateXChance] = useState(false);//firstly this is not X's chance so it is false
   const onSquareClicked =(index)=>{
+    
     let strings = Array.from(gameState);
     strings[index] = isXChance ? "X" : "0";//draw X if it is X's turn(firstly it will be false the alter)
+    // turn.play();
     updateXChance(!isXChance)//after X's chance it will update the X cance as false
     updateGameState(strings)
   }
@@ -18,7 +22,7 @@ function App() {
   useEffect(()=>{
     const winner = checkWiner();
     if (winner) {
-      
+      // GOver.play();
       alert(`${winner} has won the game..`)
       updateGameState(initialState)
     }
@@ -26,6 +30,7 @@ function App() {
     alert(`Match draw`)}
     
   }, [gameState])
+
   const checkTie= () =>{
     let count = 0;
     gameState.forEach((cell) => {
@@ -35,6 +40,7 @@ function App() {
     })
     return count === 9;
   }
+
   const checkWiner=()=>{
     //winning conditions
     const lines =[
